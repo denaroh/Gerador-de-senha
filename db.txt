@@ -1,0 +1,18 @@
+CREATE TABLE senhas (
+    id SERIAL PRIMARY KEY,
+    senha VARCHAR(255) NOT NULL,
+    data_criacao TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ALTER TABLE senhas ADD COLUMN token UUID DEFAULT uuid_generate_v4();
+
+
+
+CREATE DATABASE gerador_senhas;
+CREATE TABLE senhas (
+    id SERIAL PRIMARY KEY,
+    senha_original VARCHAR(255) NOT NULL,
+    senha_criptografada VARCHAR(255) NOT NULL,
+    token VARCHAR(255) NOT NULL,
+    local VARCHAR(255) NOT NULL
+);
